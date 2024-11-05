@@ -101,3 +101,18 @@ public class ObjectPolyExample2 {
 - 단축키인 ```Alt + Insert``` 를 사용하여 편리하게 작성할 수 있다.
 
 - 자식에서 오버라이딩된 ```toString``` 메서드를 실행하게 된다.
+
+### Object와 OCP
+
+- 만약 ```Object``` 가 없다면 아무 관계가 없는 객체의 정보를 출력하기 어려울 것 이다.
+  ![image](https://github.com/user-attachments/assets/2aadd050-e568-4f4a-8027-47cc6f5b9c43)
+
+- 하지만 위와 같이 다형적 참조를 이용해 ```Object``` 타입을 매개변수로 받아 ```Car``` ,```Dog``` 인스턴스를 포함한 모든 객체 인스턴스를 인수로 받을 수 있다.
+
+- 또한 ```Object``` 는 모든 클래스의 부모이므로, ```Dog``` ,```Car``` 와 같은 구체적인 클래스는 ```Object``` 가 가지고 있는 ```toString()``` 메서드를 오버라이딩 할 수 있다.  
+
+- 위와 같은 **다형적 참조** 와 **메서드 오버라이딩**을 이용해서 모든 객체의 정보를 편리하게 출력할 수 있다.
+
+#### System.out.println()
+
+- ```System.out.println()``` 메서드는 ```Object``` 매개변수를 사용하고 내부에서 ```toString()``` 을 호출한다. 따라서 ```System.out.println()```을 사용하면 세상의 모든 객체의 정보를 편리하게 출력할 수 있다. 
