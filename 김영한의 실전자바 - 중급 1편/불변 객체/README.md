@@ -33,3 +33,32 @@ System.out.println("b = " + b);
 
 - 위와 같은 코드에서 ```change``` 메서드에 대해서 잘 모른 상태로 메서드를 사용하게 된다면 ```a```값이 함께 부산으로 변경된 이유를 찾기 어렵다.
 - 이와 같이 여러 변수가 하나의 객체를 참조하는 공유 참조를 막을 방법은 없다. 그렇다면 공유 참조로 인해 발생하는 문제를 어떻게 해결할 수 있을까?
+
+#### 불변 객체 도입
+
+- 객체의 상태(객체 내부의 값, 필드, 멤버 변수)가 변하지 않는 객체를 불변 객체(Immutable Object)라 한다. 
+  
+  ```
+  public class ImmutableAddress {
+  private final String value;
+  public ImmutableAddress(String value) {
+  this.value = value;
+    }
+  public String getValue() {
+  return value;
+    }
+    @Override
+  public String toString() {
+  return "Address{" +
+  "value='" + value + '\'' +
+  '}';
+    }
+  }
+  ```
+- 내부 값이 변경되면 안되기 때문에 ```value```의 필드를 ```final```로 선언했다.
+- 값을 변경할 수 있는 ```setValue()```를 제거했다.
+- 이 클래스는 생성자를 통해서만 값을 설정할 수 있고, 이후에는 값을 변경하는 것이 불가능하다.
+
+##### 정리
+
+- 물론 불변객체가 아니라도 ```new```를 사용해 새로운 인스턴스를 생성할 수도 있지만 중요한 것은 에러가 발생할 수 있는 상황자체를 제거하였다는 점이다. 즉, 불변객체는 값을 변경할 수 없기 때문에 **사이드 이펙트가 원천 차단된다.**
